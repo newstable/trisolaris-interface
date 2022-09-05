@@ -78,12 +78,14 @@ export const ButtonRow = styled(RowFixed)`
 
 export const ResponsiveButtonPrimary = styled(ButtonPrimary)`
   width: fit-content;
+  border-radius:3px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 48%;
   `};
 `
 
 export const ResponsiveButtonSecondary = styled(ButtonSecondary)`
+  border-radius:3px;
   width: fit-content;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 48%;
