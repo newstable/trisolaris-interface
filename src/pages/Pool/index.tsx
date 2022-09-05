@@ -63,22 +63,20 @@ export default function Pool() {
 
   const options = [
     {
-      label: <span>Pool</span>,
-      value: {
-        Pool: true
-      },
-      selectedBackgroundColor: "#06163c",
-    },
-    {
       label: "Swap",
       value: "swap",
       selectedBackgroundColor: "#06163c"
+    },
+    {
+      label: <span>Pool</span>,
+      value: "pool",
+      selectedBackgroundColor: "#06163c",
     }
   ];
   const onChange = (newValue: any) => {
     history.push("/swap");
   };
-  const initialSelectedIndex = options.findIndex(({ value }) => value === "swap");
+  const initialSelectedIndex = options.findIndex(({ value }) => value === "pool");
   return (
     <>
       <SwitchToggleButton >

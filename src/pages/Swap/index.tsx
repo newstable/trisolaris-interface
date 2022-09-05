@@ -402,25 +402,22 @@ export default function Swap() {
 
   const onChange = (newValue: any) => {
     history.push("/pool");
-    // navigate("/pool");
   };
 
   const options = [
     {
       label: <span>Swap</span>,
-      value: {
-        Swap: true
-      },
+      value: "swap",
       selectedBackgroundColor: "#06163c",
     },
     {
       label: "Pool",
-      value: "Pool",
+      value: "pool",
       selectedBackgroundColor: "#06163c"
     }
   ];
 
-  const initialSelectedIndex = options.findIndex(({ value }) => value === "pool");
+  const initialSelectedIndex = options.findIndex(({ value }) => value === "swap");
 
   return (
     <>
