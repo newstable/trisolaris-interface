@@ -52,10 +52,16 @@ export const HeaderButtonsContainer = styled.div`
   display: flex;
 `
 
-export const StyledAddToMetaMaskButton = styled(AddToMetaMaskButton)<{ swapDetailsOpen: boolean }>`
+export const StyledAddToMetaMaskButton = styled(AddToMetaMaskButton) <{ swapDetailsOpen: boolean }>`
   position: absolute;
   top: ${({ swapDetailsOpen }) => (swapDetailsOpen ? '' : '440px')};
   bottom: ${({ swapDetailsOpen }) => (swapDetailsOpen ? '-30px' : '')};
   color: ${({ theme }) => theme.white}
   text-decoration: underline;
+`
+
+export const SwitchToggleButton = styled.div`
+  width:130px;
+  height:45px;
+  margin-bottom:20px;
 `

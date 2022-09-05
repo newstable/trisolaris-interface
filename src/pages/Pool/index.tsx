@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Pair, ChainId } from '@trisolaris/sdk'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Text } from 'rebass'
 import { useTranslation } from 'react-i18next'
 
@@ -17,10 +17,12 @@ import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
 import { useActiveWeb3React } from '../../hooks'
 import { usePairs } from '../../data/Reserves'
 import { useTrackedTokenPairs, toV2LiquidityToken } from '../../state/user/hooks'
+import SwitchSelector from "react-switch-selector";
 
-import { TitleRow, ButtonRow, ResponsiveButtonPrimary, ResponsiveButtonSecondary, EmptyProposals } from './styleds'
+import { TitleRow, ButtonRow, ResponsiveButtonPrimary, ResponsiveButtonSecondary, EmptyProposals, SwitchToggleButton } from './styleds'
 
 export default function Pool() {
+  const history = useHistory();
   const theme = useContext(ThemeContext)
   const { t } = useTranslation()
 
@@ -58,65 +60,96 @@ export default function Pool() {
 
   const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
   const hasV1Liquidity = undefined
+
+  const options = [
+    {
+      label: <span>Pool</span>,
+      value: {
+        Pool: true
+      },
+      selectedBackgroundColor: "#06163c",
+    },
+    {
+      label: "Swap",
+      value: "swap",
+      selectedBackgroundColor: "#06163c"
+    }
+  ];
+  const onChange = (newValue: any) => {
+    history.push("/swap");
+  };
+  const initialSelectedIndex = options.findIndex(({ value }) => value === "swap");
   return (
-    <PageWrapper>
-      {/* <PoolTabs active="/pool" /> */}
-      <AutoColumn gap="lg" justify="center">
-        <AutoColumn gap="lg" style={{ width: '100%' }}>
-          <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
-            <HideSmall>
-              <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
-                {t('pool.yourLiquidity')}
-              </TYPE.mediumHeader>
-            </HideSmall>
-            <ButtonRow>
-              <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/ETH">
-                {t('pool.createPair')}
-              </ResponsiveButtonSecondary>
-              <ResponsiveButtonPrimary id="join-pool-button" as={Link} padding="6px 8px" to="/add/ETH">
-                <Text fontWeight={500} fontSize={16}>
-                  {t('pool.addLiquidity')}
-                </Text>
-              </ResponsiveButtonPrimary>
-            </ButtonRow>
-          </TitleRow>
+    <>
+      <SwitchToggleButton >
+        <SwitchSelector
+          onChange={onChange}
+          options={options}
+          initialSelectedIndex={initialSelectedIndex}
+          backgroundColor={"#353b48"}
+          fontColor={"#f5f6fa"}
+        />
+      </SwitchToggleButton>
+      <PageWrapper>
+        {/* <PoolTabs active="/pool" /> */}
+        <AutoColumn gap="lg" justify="center">
+          <AutoColumn gap="lg" style={{ width: '100%' }}>
+            <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
+              <HideSmall>
+                <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
+                  {t('pool.yourLiquidity')}
+                </TYPE.mediumHeader>
+              </HideSmall>
+              <ButtonRow>
+                <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/ETH">
+                  {t('pool.createPair')}
+                </ResponsiveButtonSecondary>
+                <ResponsiveButtonPrimary id="join-pool-button" as={Link} padding="6px 8px" to="/add/ETH">
+                  <Text fontWeight={500} fontSize={16}>
+                    {t('pool.addLiquidity')}
+                  </Text>
+                </ResponsiveButtonPrimary>
+              </ButtonRow>
+            </TitleRow>
 
-          {!account ? (
-            <Card padding="40px">
-              <TYPE.body color={theme.text3} textAlign="center">
-                {t('pool.connectWalletToView')}
-              </TYPE.body>
-            </Card>
-          ) : v2IsLoading ? (
-            <EmptyProposals>
-              <TYPE.body color={theme.text3} textAlign="center">
-                <Dots>{t('pool.loading')}</Dots>
-              </TYPE.body>
-            </EmptyProposals>
-          ) : allV2PairsWithLiquidity?.length > 0 ? (
-            <>
-              {allV2PairsWithLiquidity.map(v2Pair => (
-                <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
-              ))}
-            </>
-          ) : (
-            <EmptyProposals>
-              <TYPE.body color={theme.text3} textAlign="center">
-                {t('pool.noLiquidity')}
-              </TYPE.body>
-            </EmptyProposals>
-          )}
+            {!account ? (
+              <Card padding="40px">
+                <TYPE.body color={theme.text3} textAlign="center">
+                  {t('pool.connectWalletToView')}
+                </TYPE.body>
+              </Card>
+            ) : v2IsLoading ? (
+              <EmptyProposals>
+                <TYPE.body color={theme.text3} textAlign="center">
+                  <Dots>{t('pool.loading')}</Dots>
+                </TYPE.body>
+              </EmptyProposals>
+            ) : allV2PairsWithLiquidity?.length > 0 ? (
+              <>
+                {allV2PairsWithLiquidity.map(v2Pair => (
+                  <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
+                ))}
+              </>
+            ) : (
+              <EmptyProposals>
+                <TYPE.body color={theme.text3} textAlign="center">
+                  {t('pool.noLiquidity')}
+                </TYPE.body>
+              </EmptyProposals>
+            )}
 
-          <AutoColumn justify={'center'} gap="md">
-            <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
-              {hasV1Liquidity ? t('pool.uniswapV1Found') : t('pool.noSeePoolJoined')}{' '}
-              <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
-                {hasV1Liquidity ? t('pool.migrateNow') : t('pool.importIt')}
-              </StyledInternalLink>
-            </Text>
+            <AutoColumn justify={'center'} gap="md">
+              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+                {hasV1Liquidity ? t('pool.uniswapV1Found') : t('pool.noSeePoolJoined')}{' '}
+                <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
+                  {hasV1Liquidity ? t('pool.migrateNow') : t('pool.importIt')}
+                </StyledInternalLink>
+              </Text>
+            </AutoColumn>
           </AutoColumn>
         </AutoColumn>
-      </AutoColumn>
-    </PageWrapper>
+      </PageWrapper>
+    </>
+
   )
 }

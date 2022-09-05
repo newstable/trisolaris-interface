@@ -4,6 +4,7 @@ import { ThemeContext } from 'styled-components'
 import { JSBI, Percent, Token, Trade } from '@trisolaris/sdk'
 import { ChevronDown } from 'react-feather'
 import { Text } from 'rebass'
+import { useHistory } from "react-router-dom";
 import { useTranslation } from 'react-i18next'
 
 import TradePrice from '../../components/swap/TradePrice'
@@ -26,6 +27,7 @@ import { DeprecatedWarning } from '../../components/Warning'
 import Settings from '../../components/Settings'
 import AppBody from '../AppBody'
 import Loader from '../../components/Loader'
+import SwitchSelector from "react-switch-selector";
 
 import { useActiveWeb3React } from '../../hooks'
 import { useCurrency } from '../../hooks/Tokens'
@@ -64,13 +66,15 @@ import {
   IconContainer,
   HeadingContainer,
   HeaderButtonsContainer,
-  StyledAddToMetaMaskButton
+  StyledAddToMetaMaskButton,
+  SwitchToggleButton
 } from './Swap.styles'
 import { isStableSwapHighPriceImpact, useDerivedStableSwapInfo } from '../../state/stableswap/hooks'
 import { useStableSwapCallback } from '../../hooks/useStableSwapCallback'
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
+  const history = useHistory();
   const { t } = useTranslation()
 
   // token warning stuff
@@ -146,13 +150,13 @@ export default function Swap() {
     () =>
       showWrap
         ? {
-            [Field.INPUT]: defaultswapParsedAmount,
-            [Field.OUTPUT]: defaultswapParsedAmount
-          }
+          [Field.INPUT]: defaultswapParsedAmount,
+          [Field.OUTPUT]: defaultswapParsedAmount
+        }
         : {
-            [Field.INPUT]: independentField === Field.INPUT ? defaultswapParsedAmount : trade?.inputAmount,
-            [Field.OUTPUT]: independentField === Field.OUTPUT ? defaultswapParsedAmount : trade?.outputAmount
-          },
+          [Field.INPUT]: independentField === Field.INPUT ? defaultswapParsedAmount : trade?.inputAmount,
+          [Field.OUTPUT]: independentField === Field.OUTPUT ? defaultswapParsedAmount : trade?.outputAmount
+        },
     [defaultswapParsedAmount, independentField, showWrap, trade]
   )
 
@@ -173,13 +177,13 @@ export default function Swap() {
   if (isRoutedViaStableSwap) {
     parsedAmounts = showWrap
       ? {
-          [Field.INPUT]: stableswapParsedAmount,
-          [Field.OUTPUT]: stableswapParsedAmount
-        }
+        [Field.INPUT]: stableswapParsedAmount,
+        [Field.OUTPUT]: stableswapParsedAmount
+      }
       : {
-          [Field.INPUT]: independentField === Field.INPUT ? stableswapParsedAmount : stableswapTrade?.inputAmount,
-          [Field.OUTPUT]: independentField === Field.OUTPUT ? stableswapParsedAmount : stableswapTrade?.outputAmount
-        }
+        [Field.INPUT]: independentField === Field.INPUT ? stableswapParsedAmount : stableswapTrade?.inputAmount,
+        [Field.OUTPUT]: independentField === Field.OUTPUT ? stableswapParsedAmount : stableswapTrade?.outputAmount
+      }
   }
 
   const swapInputError = isRoutedViaStableSwap ? stableswapInputError : defaultswapInputError
@@ -313,8 +317,8 @@ export default function Swap() {
             recipient === null
               ? 'Swap w/o Send'
               : (recipientAddress ?? recipient) === account
-              ? 'Swap w/o Send + recipient'
-              : 'Swap w/ Send',
+                ? 'Swap w/o Send + recipient'
+                : 'Swap w/ Send',
           label: [trade?.inputAmount?.currency?.symbol, trade?.outputAmount?.currency?.symbol, Version.v2].join('/')
         })
       })
@@ -396,6 +400,28 @@ export default function Swap() {
     return highImpactTrade ? `${t('swapPage.swap')} ${t('swapPage.anyway')}` : t('swapPage.swap')
   }
 
+  const onChange = (newValue: any) => {
+    history.push("/pool");
+    // navigate("/pool");
+  };
+
+  const options = [
+    {
+      label: <span>Swap</span>,
+      value: {
+        Swap: true
+      },
+      selectedBackgroundColor: "#06163c",
+    },
+    {
+      label: "Pool",
+      value: "Pool",
+      selectedBackgroundColor: "#06163c"
+    }
+  ];
+
+  const initialSelectedIndex = options.findIndex(({ value }) => value === "pool");
+
   return (
     <>
       <TokenWarningModal
@@ -410,6 +436,15 @@ export default function Swap() {
         </WarningWrapper>
       )}
 
+      <SwitchToggleButton >
+        <SwitchSelector
+          onChange={onChange}
+          options={options}
+          initialSelectedIndex={initialSelectedIndex}
+          backgroundColor={"#353b48"}
+          fontColor={"#f5f6fa"}
+        />
+      </SwitchToggleButton>
       <Root>
         <IconContainer>
           <img height="500px" src={spacemenAndPlanets} />
@@ -542,8 +577,8 @@ export default function Swap() {
                       (wrapType === WrapType.WRAP
                         ? t('swapPage.wrap')
                         : wrapType === WrapType.UNWRAP
-                        ? t('swapPage.unwrap')
-                        : null)}
+                          ? t('swapPage.unwrap')
+                          : null)}
                   </ButtonPrimary>
                 ) : noRoute && userHasSpecifiedInputOutput ? (
                   <GreyCard style={{ textAlign: 'center' }}>
