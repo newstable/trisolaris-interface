@@ -408,12 +408,12 @@ export default function Swap() {
     {
       label: <span>Swap</span>,
       value: "swap",
-      selectedBackgroundColor: "#06163c",
+      selectedBackgroundColor: "#c43acf",
     },
     {
       label: "Pool",
       value: "pool",
-      selectedBackgroundColor: "#06163c"
+      selectedBackgroundColor: "#c43acf"
     }
   ];
 

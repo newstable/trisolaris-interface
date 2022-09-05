@@ -65,12 +65,12 @@ export default function Pool() {
     {
       label: "Swap",
       value: "swap",
-      selectedBackgroundColor: "#06163c"
+      selectedBackgroundColor: "#c43acf"
     },
     {
       label: <span>Pool</span>,
       value: "pool",
-      selectedBackgroundColor: "#06163c",
+      selectedBackgroundColor: "#c43acf",
     }
   ];
   const onChange = (newValue: any) => {

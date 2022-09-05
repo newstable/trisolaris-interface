@@ -23,7 +23,7 @@ const MEDIA_WIDTHS = {
 
 const mediaWidthTemplates: { [width in keyof typeof MEDIA_WIDTHS]: typeof css } = Object.keys(MEDIA_WIDTHS).reduce(
   (accumulator, size) => {
-    ;(accumulator as any)[size] = (a: any, b: any, c: any) => css`
+    ; (accumulator as any)[size] = (a: any, b: any, c: any) => css`
       @media (max-width: ${(MEDIA_WIDTHS as any)[size]}px) {
         ${css(a, b, c)}
       }
@@ -62,11 +62,11 @@ export function colors(darkMode: boolean): Colors {
     advancedBG: '#1C1F26',
 
     //primary colors
-    primary1: '#1350ff',
-    primary2: '#1350ff', // Not used
-    primary3: '#1350ff',
-    primary4: '#1350ff',
-    primary5: '#1350ff',
+    primary1: '#c43acf',
+    primary2: '#c43acf', // Not used
+    primary3: '#c43acf',
+    primary4: '#c43acf',
+    primary5: '#c43acf',
     primary6: '#0050FF',
 
     // color text
@@ -133,7 +133,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   return <StyledComponentsThemeProvider theme={themeObject}>{children}</StyledComponentsThemeProvider>
 }
 
-const TextWrapper = styled(Text)<{ color: keyof Colors }>`
+const TextWrapper = styled(Text) <{ color: keyof Colors }>`
   color: ${({ color, theme }) => (theme as any)[color]};
 `
 

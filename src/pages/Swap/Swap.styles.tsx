@@ -61,7 +61,7 @@ export const StyledAddToMetaMaskButton = styled(AddToMetaMaskButton) <{ swapDeta
 `
 
 export const SwitchToggleButton = styled.div`
-  width:130px;
+  width:150px;
   height:45px;
   margin-bottom:20px;
 `

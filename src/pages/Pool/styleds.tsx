@@ -100,7 +100,7 @@ export const EmptyProposals = styled.div`
   align-items: center;
 `
 export const SwitchToggleButton = styled.div`
-  width:130px;
+  width:150px;
   height:45px;
   margin-bottom:20px;
 `
