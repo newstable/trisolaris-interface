@@ -65,12 +65,12 @@ export default function Pool() {
     {
       label: "Swap",
       value: "swap",
-      selectedBackgroundColor: "#c43acf"
+      selectedBackgroundColor: "linear-gradient(135deg, rgba(184,38,255,1) 0%, rgba(252,99,255,1) 100%)"
     },
     {
       label: <span>Pool</span>,
       value: "pool",
-      selectedBackgroundColor: "#c43acf",
+      selectedBackgroundColor: "linear-gradient(135deg, rgba(184,38,255,1) 0%, rgba(252,99,255,1) 100%)",
     }
   ];
   const onChange = (newValue: any) => {

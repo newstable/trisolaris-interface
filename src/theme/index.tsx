@@ -57,6 +57,7 @@ export function colors(darkMode: boolean): Colors {
     bg5: '#6C7284',
     bg6: '#77838f80',
 
+
     //specialty colors
     modalBG: '#12141A',
     advancedBG: '#1C1F26',
@@ -67,7 +68,7 @@ export function colors(darkMode: boolean): Colors {
     primary3: '#c43acf',
     primary4: '#c43acf',
     primary5: '#c43acf',
-    primary6: '#0050FF',
+    primary6: 'linear-gradient(135deg, rgba(184,38,255,1) 0%, rgba(252,99,255,1) 100%)',
 
     // color text
     primaryText1: darkMode ? '#ffffff' : '#ffffff',
@@ -239,8 +240,7 @@ body {
   background-image: ${({ theme }) =>
     `radial-gradient(50% 50% at 50% 50%, ${transparentize(0.85, theme.primary1)} 0%, ${transparentize(
       1,
-      theme.bg1
-    )} 100%)`};
+    )} #00050F 100%)`};
     
   /* Fix content jumping when scrollbar appears*/
   width:100vw;

@@ -129,7 +129,7 @@ const AccountControl = styled.div`
   }
 `
 
-const AddressLink = styled(ExternalLink)<{ hasENS: boolean; isENS: boolean }>`
+const AddressLink = styled(ExternalLink) <{ hasENS: boolean; isENS: boolean }>`
   font-size: 0.825rem;
   color: ${({ theme }) => theme.text3};
   margin-left: 1rem;
@@ -274,7 +274,7 @@ export default function AccountDetails({
                     <WalletAction
                       style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {
-                        ;(connector as any).close()
+                        ; (connector as any).close()
                       }}
                     >
                       {t('accountDetails.disconnect')}

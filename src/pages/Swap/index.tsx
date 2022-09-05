@@ -408,12 +408,12 @@ export default function Swap() {
     {
       label: <span>Swap</span>,
       value: "swap",
-      selectedBackgroundColor: "#c43acf",
+      selectedBackgroundColor: "linear-gradient(135deg, rgba(184,38,255,1) 0%, rgba(252,99,255,1) 100%)",
     },
     {
       label: "Pool",
       value: "pool",
-      selectedBackgroundColor: "#c43acf"
+      selectedBackgroundColor: "linear-gradient(135deg, rgba(184,38,255,1) 0%, rgba(252,99,255,1) 100%)"
     }
   ];
 

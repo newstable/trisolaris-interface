@@ -6,7 +6,7 @@ import { RowBetween } from '../Row'
 import { ChevronDown } from 'react-feather'
 import { Button as RebassButton, ButtonProps } from 'rebass/styled-components'
 
-const Base = styled(RebassButton)<{
+const Base = styled(RebassButton) <{
   padding?: string
   width?: string
   borderRadius?: string
@@ -64,7 +64,8 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background-color: ${({ theme }) => theme.primary5};
+  background: ${({ theme }) => theme.primary6};
+  border-radius:3px;
   color: ${({ theme }) => theme.primaryText1};
   font-size: 16px;
   font-weight: 500;
