@@ -447,9 +447,9 @@ export default function Swap() {
           <img height="500px" src={spacemenAndPlanets} />
         </IconContainer>
         <SwapContainer>
-          <AppBody>
+          <AppBody >
             <SwapPoolTabs active={'swap'} />
-            <Wrapper id="swap-page">
+            <Wrapper id="swap-page" >
               <ConfirmSwapModal
                 isOpen={showConfirm}
                 trade={trade}
@@ -466,7 +466,7 @@ export default function Swap() {
                 stableswapPriceImpactWithoutFee={stableswapPriceImpactWithoutFee}
                 isStableSwapPriceImpactSevere={isStableSwapPriceImpactSevere}
               />
-              <AutoColumn gap={'md'}>
+              <AutoColumn gap={'md'} >
                 <HeadingContainer>
                   <TYPE.largeHeader>Swap</TYPE.largeHeader>
                   <HeaderButtonsContainer>
@@ -490,9 +490,9 @@ export default function Swap() {
                   otherCurrency={currencies[Field.OUTPUT]}
                   id="swap-currency-input"
                 />
-                <AutoColumn justify="space-between">
+                <AutoColumn justify="space-between" >
                   <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
-                    <ChevronWrapper height={30} width={30} clickable>
+                    <ChevronWrapper height={30} width={30} clickable style={{ backgroundColor: "#c43acf" }}>
                       <ChevronDown
                         size="24"
                         onClick={() => {
