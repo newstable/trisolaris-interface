@@ -60,7 +60,7 @@ export default function Pool() {
   const hasV1Liquidity = undefined
   return (
     <PageWrapper>
-      <PoolTabs active="/pool" />
+      {/* <PoolTabs active="/pool" /> */}
       <AutoColumn gap="lg" justify="center">
         <AutoColumn gap="lg" style={{ width: '100%' }}>
           <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>

@@ -120,7 +120,7 @@ export default function Header() {
           >
             {t('header.pool')}
           </StyledNavLink>
-          <StyledNavLink id={`ptri-nav-link`} to={'/stake'} isActive={Boolean}>
+          {/* <StyledNavLink id={`ptri-nav-link`} to={'/stake'} isActive={Boolean}>
             {t('header.stake')}
           </StyledNavLink>
           <StyledNavLink
@@ -129,14 +129,14 @@ export default function Header() {
             isActive={(match, { pathname }) => Boolean(match) || pathname.startsWith('/png')}
           >
             {t('header.farm')}
-          </StyledNavLink>
-          <StyledBridgesMenu />
-          <StyledGovernanceMenu />
+          </StyledNavLink> */}
+          {/* <StyledBridgesMenu /> */}
+          {/* <StyledGovernanceMenu /> */}
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
         <HeaderElement>
-          <TRIWrapper active={true}>
+          {/* <TRIWrapper active={true}>
             <TRIButton
               onClick={e => {
                 e.currentTarget.blur()
@@ -155,7 +155,7 @@ export default function Header() {
               </Text>
             </TRIButton>
             <TriPriceModal />
-          </TRIWrapper>
+          </TRIWrapper> */}
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             <Web3Status />
           </AccountElement>
