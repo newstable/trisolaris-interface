@@ -16,7 +16,7 @@ const Base = styled(RebassButton) <{
   width: ${({ width }) => (width ? width : '100%')};
   font-weight: 500;
   text-align: center;
-  border-radius: 12px;
+  border-radius: 2px;
   border-radius: ${({ borderRadius }) => borderRadius && borderRadius};
   outline: none;
   border: 1px solid transparent;
@@ -40,6 +40,7 @@ const Base = styled(RebassButton) <{
 
 export const ButtonPrimary = styled(Base)`
   background: ${({ theme }) => theme.primary6};
+  border-radius:3px;
   color: white;
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.primary1)};
@@ -115,7 +116,7 @@ export const ButtonSecondary = styled(Base)`
   color: ${({ theme }) => theme.primary1};
   background-color: transparent;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 2px;
   padding: ${({ padding }) => (padding ? padding : '10px')};
 
   &:focus {

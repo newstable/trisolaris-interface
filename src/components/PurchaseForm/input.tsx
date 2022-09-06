@@ -16,7 +16,7 @@ export const StyledInput = styled.input<{ error?: boolean }>`
   flex: 0 0 100%;
   white-space: nowrap;
   background: transparent;
-  border-radius: 8px;
+  border-radius: 2px;
   color: ${({ theme }) => theme.text1};
   border-style: solid;
   border: 1px solid ${({ error, theme }) => (error ? theme.red1 : theme.bg2)};

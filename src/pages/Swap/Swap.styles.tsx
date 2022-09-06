@@ -64,4 +64,10 @@ export const SwitchToggleButton = styled.div`
   width:150px;
   height:45px;
   margin-bottom:20px;
+  div{
+    border-radius:0px;
+    &::before{
+      border-radius:0px;
+    }
+  }
 `

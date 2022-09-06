@@ -12,7 +12,7 @@ const QuestionWrapper = styled.div`
   background: none;
   outline: none;
   cursor: default;
-  border-radius: 36px;
+  border-radius: 2px;
   background-color: ${({ theme }) => theme.bg2};
   color: ${({ theme }) => theme.text2};
 
@@ -31,7 +31,7 @@ const LightQuestionWrapper = styled.div`
   background: none;
   outline: none;
   cursor: default;
-  border-radius: 36px;
+  border-radius: 2px;
   width: 24px;
   height: 24px;
   background-color: rgba(255, 255, 255, 0.1);

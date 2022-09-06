@@ -18,7 +18,7 @@ export const MaxButton = styled.button<{ width: string }>`
   padding: 0.5rem 1rem;
   background-color: ${({ theme }) => theme.primary5};
   border: 1px solid ${({ theme }) => theme.primary5};
-  border-radius: 0.5rem;
+  border-radius: 2px;
   font-size: 1rem;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 0.25rem 0.5rem;
@@ -95,7 +95,7 @@ export const ResponsiveButtonSecondary = styled(ButtonSecondary)`
 export const EmptyProposals = styled.div`
   border: 1px solid ${({ theme }) => theme.bg3};
   padding: 16px 12px;
-  border-radius: 12px;
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,4 +105,10 @@ export const SwitchToggleButton = styled.div`
   width:150px;
   height:45px;
   margin-bottom:20px;
+  div {
+    border-radius:0px;
+    &::before{
+      border-radius:0px;
+    }
+  }
 `

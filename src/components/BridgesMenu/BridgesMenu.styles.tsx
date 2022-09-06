@@ -19,10 +19,10 @@ export const StyledMenuFlyout = styled(MenuFlyout)`
 
 export const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName
-})<{ isActive?: boolean }>`
+}) <{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
-  border-radius: 3rem;
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -33,7 +33,7 @@ export const StyledExternalLink = styled(ExternalLink).attrs({
   justify-content: space-between;
 
   &.${activeClassName} {
-    border-radius: 12px;
+    border-radius: 2px;
     font-weight: 600;
     color: ${({ theme }) => theme.text1};
   }

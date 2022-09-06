@@ -8,7 +8,7 @@ import { TYPE } from '../../theme'
 import { addCommasToNumber } from '../../utils'
 
 const Row = styled(AutoRow)`
-  border-radius: 12px;
+  border-radius: 2px;
   justify-content: space-between;
   padding: 0.2rem 0.5rem;
   :nth-child(odd) {

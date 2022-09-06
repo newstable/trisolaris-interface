@@ -15,7 +15,7 @@ export const StyledContractButton = styled.button`
   height: 28px;
   width: 28px;
   background-color: ${({ theme }) => theme.bg6};
-  border-radius: 100%;
+  border-radius: 2px;
   color: ${({ theme }) => theme.text1};
 
   :hover,

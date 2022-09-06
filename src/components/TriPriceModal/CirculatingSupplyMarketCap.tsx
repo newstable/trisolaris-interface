@@ -11,7 +11,7 @@ import { addCommasToNumber } from '../../utils'
 const DataRow = styled(RowBetween)`
   background: ${({ theme }) => theme.bg3};
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 5px;
   margin-top: 1rem;
 `

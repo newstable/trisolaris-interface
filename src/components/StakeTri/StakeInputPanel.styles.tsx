@@ -37,7 +37,7 @@ export const InputPanel = styled.div<{ hideInput?: boolean }>`
 `
 
 export const Container = styled.div`
-  border-radius: 10px;
+  border-radius: 2px;
   border: 1px solid ${({ theme }) => theme.bg3};
   background-color: ${({ theme }) => theme.bg3};
 `

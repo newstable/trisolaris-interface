@@ -5,14 +5,14 @@ import { TYPE } from '../../../theme'
 import Card from '../../Card'
 import { ButtonPrimary } from '../../Button'
 
-export const Wrapper = styled(Card)<{
+export const Wrapper = styled(Card) <{
   bgColor1: string | null
   bgColor2?: string | null
   isFeatured?: boolean
   currenciesQty: number
 }>`
   border: ${({ isFeatured, theme }) => (isFeatured ? `1px solid ${theme.primary1}` : `1px solid ${theme.bg3};`)};
-  border-radius: 10px;
+  border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -34,7 +34,7 @@ export const PairContainer = styled.div`
   align-items: center;
 `
 
-export const ResponsiveCurrencyLabel = styled(TYPE.white)<{ currenciesQty: number }>`
+export const ResponsiveCurrencyLabel = styled(TYPE.white) <{ currenciesQty: number }>`
   font-size: ${({ currenciesQty }) => `${currenciesQty > 3 ? '14px' : '16px'} !important;`}
   margin-left: 0.5rem !important;
   max-width: 150px;
@@ -44,10 +44,10 @@ export const ResponsiveCurrencyLabel = styled(TYPE.white)<{ currenciesQty: numbe
   `};
 `
 
-export const Button = styled(ButtonPrimary)<{ isStaking: boolean }>`
+export const Button = styled(ButtonPrimary) <{ isStaking: boolean }>`
   background: ${({ isStaking, theme }) => (isStaking ? theme.black : theme.primary1)};
   padding: 8px;
-  border-radius: 10px;
+  border-radius: 2px;
   max-width: 80px;
   ${({ isStaking, theme }) =>
     isStaking &&
@@ -61,7 +61,7 @@ export const Button = styled(ButtonPrimary)<{ isStaking: boolean }>`
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
         padding: 4px;
-        border-radius: 5px;
+        border-radius: 2px;
     `};
 `
 
@@ -74,7 +74,7 @@ export const TokenPairBackgroundColor = styled.span<{ bgColor1: string | null; b
     `linear-gradient(90deg, ${bgColor1 ?? theme.blue1} 0%, ${bgColor2 ?? 'grey'} 90%);`};
   background-size: cover;
   mix-blend-mode: overlay;
-  border-radius: 10px;
+  border-radius: 2px;
   width: 100%;
   height: 100%;
   opacity: 0.5;

@@ -22,7 +22,7 @@ const FancyButton = styled.button`
   color: ${({ theme }) => theme.text1};
   align-items: center;
   height: 2rem;
-  border-radius: 36px;
+  border-radius: 2px;
   font-size: 1rem;
   width: auto;
   min-width: 3.5rem;
@@ -37,7 +37,7 @@ const FancyButton = styled.button`
   }
 `
 
-const Option = styled(FancyButton)<{ active: boolean }>`
+const Option = styled(FancyButton) <{ active: boolean }>`
   margin-right: 8px;
   :hover {
     cursor: pointer;
@@ -59,7 +59,7 @@ const Input = styled.input`
   text-align: right;
 `
 
-const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }>`
+const OptionCustom = styled(FancyButton) <{ active?: boolean; warning?: boolean }>`
   height: 2rem;
   position: relative;
   padding: 0 0.75rem;
@@ -67,14 +67,14 @@ const OptionCustom = styled(FancyButton)<{ active?: boolean; warning?: boolean }
   border: ${({ theme, active, warning }) => active && `1px solid ${warning ? theme.red1 : theme.primary1}`};
   :hover {
     border: ${({ theme, active, warning }) =>
-      active && `1px solid ${warning ? darken(0.1, theme.red1) : darken(0.1, theme.primary1)}`};
+    active && `1px solid ${warning ? darken(0.1, theme.red1) : darken(0.1, theme.primary1)}`};
   }
 
   input {
     width: 100%;
     height: 100%;
     border: 0px;
-    border-radius: 2rem;
+    border-radius: 2px;
   }
 `
 
@@ -131,7 +131,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
       if (!Number.isNaN(valueAsIntFromRoundedFloat) && valueAsIntFromRoundedFloat < 5000) {
         setRawSlippage(valueAsIntFromRoundedFloat)
       }
-    } catch {}
+    } catch { }
   }
 
   function parseCustomDeadline(value: string) {
@@ -142,7 +142,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
       if (!Number.isNaN(valueAsInt) && valueAsInt > 0) {
         setDeadline(valueAsInt)
       }
-    } catch {}
+    } catch { }
   }
 
   return (
@@ -185,7 +185,7 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
           <OptionCustom active={![10, 50, 100].includes(rawSlippage)} warning={!slippageInputIsValid} tabIndex={-1}>
             <RowBetween>
               {!!slippageInput &&
-              (slippageError === SlippageError.RiskyLow || slippageError === SlippageError.RiskyHigh) ? (
+                (slippageError === SlippageError.RiskyLow || slippageError === SlippageError.RiskyHigh) ? (
                 <SlippageEmojiContainer>
                   <span role="img" aria-label="warning">
                     ⚠️
@@ -218,8 +218,8 @@ export default function SlippageTabs({ rawSlippage, setRawSlippage, deadline, se
             {slippageError === SlippageError.InvalidInput
               ? t('transactionSettings.enterValidSlippage')
               : slippageError === SlippageError.RiskyLow
-              ? t('transactionSettings.transactionMayFail')
-              : t('transactionSettings.transactionMayFrontrun')}
+                ? t('transactionSettings.transactionMayFail')
+                : t('transactionSettings.transactionMayFrontrun')}
           </RowBetween>
         )}
       </AutoColumn>

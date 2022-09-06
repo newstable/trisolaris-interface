@@ -13,7 +13,7 @@ import BackButton from '../BackButton'
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
-  border-radius: 3rem;
+  border-radius: 2px;
   justify-content: space-evenly;
 `
 
@@ -26,7 +26,7 @@ const StyledNavLink = styled(NavLink).attrs({
   align-items: center;
   justify-content: center;
   height: 3rem;
-  border-radius: 3rem;
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -34,7 +34,7 @@ const StyledNavLink = styled(NavLink).attrs({
   font-size: 20px;
 
   &.${activeClassName} {
-    border-radius: 12px;
+    border-radius: 2px;
     font-weight: 500;
     color: ${({ theme, color }) => color || theme.text1};
     text-decoration: underline;
@@ -117,8 +117,8 @@ export function AddRemoveTabs({
           {creating
             ? t('navigationTabs.createPair')
             : adding
-            ? t('navigationTabs.addLiquidity')
-            : t('navigationTabs.removeLiquidity')}
+              ? t('navigationTabs.addLiquidity')
+              : t('navigationTabs.removeLiquidity')}
         </ActiveText>
         <Settings />
       </RowBetween>

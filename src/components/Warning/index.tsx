@@ -6,7 +6,7 @@ import { RowFixed } from '../Row'
 import { AutoColumn } from '../Column'
 
 const WarningWrapper = styled.div`
-  border-radius: 20px;
+  border-radius: 2px;
   border: 1px solid #f82d3a;
   background: rgba(248, 45, 58, 0.05);
   padding: 1rem;

@@ -69,7 +69,7 @@ export const HeaderControls = styled.div`
   width: 100%;
   z-index: 99;
   height: 72px;
-  border-radius: 12px 12px 0 0;
+  border-radius: 2px;
   background-color: ${({ theme }) => theme.bg1};
 `};
 `
@@ -115,7 +115,7 @@ export const AccountElement = styled.div<{ active: boolean }>`
 display: flex;
 flex-direction: row;
 align-items: center;
-border-radius: 12px;
+border-radius: 2px;
 white-space: nowrap;
 width: 100%;
 cursor: pointer;
@@ -177,7 +177,7 @@ export const StyledNavLink = styled(NavLink).attrs({
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
-  border-radius: 3rem;
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -187,7 +187,7 @@ export const StyledNavLink = styled(NavLink).attrs({
   font-weight: 500;
 
   &.${activeClassName} {
-    border-radius: 12px;
+    border-radius: 2px;
     font-weight: 600;
     color: ${({ theme }) => theme.text1};
   }

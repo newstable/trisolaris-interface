@@ -20,7 +20,7 @@ const StyledRangeInput = styled.input<{ size: number }>`
     height: ${({ size }) => size}px;
     width: ${({ size }) => size}px;
     background-color: #565a69;
-    border-radius: 100%;
+    border-radius: 2px;
     border: none;
     transform: translateY(-50%);
     color: ${({ theme }) => theme.bg1};
@@ -36,7 +36,7 @@ const StyledRangeInput = styled.input<{ size: number }>`
     height: ${({ size }) => size}px;
     width: ${({ size }) => size}px;
     background-color: #565a69;
-    border-radius: 100%;
+    border-radius: 2px;
     border: none;
     color: ${({ theme }) => theme.bg1};
 
@@ -51,7 +51,7 @@ const StyledRangeInput = styled.input<{ size: number }>`
     height: ${({ size }) => size}px;
     width: ${({ size }) => size}px;
     background-color: #565a69;
-    border-radius: 100%;
+    border-radius: 2px;
     color: ${({ theme }) => theme.bg1};
 
     &:hover,
