@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components'
 import { JSBI, Percent, Token, Trade } from '@trisolaris/sdk'
 import { ChevronDown } from 'react-feather'
 import { Text } from 'rebass'
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import TradePrice from '../../components/swap/TradePrice'
